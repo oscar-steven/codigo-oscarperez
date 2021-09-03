@@ -20,6 +20,9 @@
                     type="text" 
                     id="nombres"
                     placeholder="Ej. Oscar Steven"
+                    required
+                    minlength="2"
+                    maxlength="10"
                 >
                 <br>
                 <label for="apellidos">Apellidos:</label>
@@ -27,6 +30,8 @@
                     type="text"
                     id="apellidos"
                     placeholder="Ej. Perez Huaman"
+                    required
+                    pattern="[a-z]{1,}"
                 >
                 <br>
                 <label for="email">Email:</label>
@@ -48,6 +53,8 @@
                     type="number"
                     id="edad"
                     placeholder="Ej. 18"
+                    min="0"
+                    max="140"
                 >
                 <br>
                 <label for="genero">Genero:</label>
@@ -129,6 +136,10 @@
                 <br>
                 <label>Biografia</label>
                 <textarea cols="20" rows="5"></textarea>
+                <br>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpiar">
+                <button>Click</button>
 
             </form>
         </section>
