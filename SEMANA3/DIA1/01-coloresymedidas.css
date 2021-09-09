@@ -1,0 +1,18 @@
+h1 {
+    color:peru;
+}
+
+h2 {
+    /*hexadecimal trabaja en pares*/
+    /*color: #RR GG BB*/
+color: #555;
+}
+
+h3 {
+    color: rgb(255 , 85, 197);
+}
+
+p {
+    /*Matiz, saturacion e iluminacion*/
+    background-color: hsl(178, 100%, 74%);
+}

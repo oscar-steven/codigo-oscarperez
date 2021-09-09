@@ -1,0 +1,45 @@
+.form_opcion2 {
+    width:300px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:silver;
+}
+
+input[type="text"], textarea, select{
+	width: 270px;;
+	padding:10px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+}
+
+.datos1 label {
+    font-family: arial;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+h2 {
+    font-family: arial;
+    font-weight: bold;  
+}
+
+input[type="button"] {
+    background-color:blue;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .datos2 label {
+    font-family: arial;
+    font-weight: bold;
+    font-size: 14px;
+  }
