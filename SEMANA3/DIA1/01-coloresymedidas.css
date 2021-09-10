@@ -1,5 +1,13 @@
+*{
+    border: 1px solid black;
+}
+
+
 h1 {
     color:peru;
+    width: 50%;
+    border: 1px solid blue;
+    height: 20%;
 }
 
 h2 {
@@ -15,4 +23,11 @@ h3 {
 p {
     /*Matiz, saturacion e iluminacion*/
     background-color: hsl(178, 100%, 74%);
+}
+
+/* Medidas */
+
+header {
+    width: 400px;
+    height: 200px;
 }
