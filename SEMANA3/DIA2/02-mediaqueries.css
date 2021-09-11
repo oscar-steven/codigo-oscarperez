@@ -1,0 +1,47 @@
+h1 {
+    background-color: blueviolet;
+}
+
+/*hoja de css, aparte, solo para cierto ancho*/
+@media screen  and (max-width: 768px) {
+    h1 {
+        background-color: aquamarine;
+        font-size: calc(14px + 3vw);
+    }
+
+}
+
+.titulares, .noticia {
+    border: 1px solid red;
+
+}
+
+.titulares {
+    display: flex;
+    justify-content: space-between;
+}
+
+.noticia {
+    max-width: 200px;
+}
+
+header {
+    width: 100vw;
+    height: 100vw;
+}
+
+/*max hasta 576*/
+/*min desde 576 a + */
+@media screen and (max-width: 576px){
+    h1 {
+        background-color: orangered;
+    }
+
+    .titulares {
+        flex-direction: column;
+    }
+
+    .noticia {
+        max-width: 100%;
+    }
+}
