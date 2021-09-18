@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid gray; */
+    font-family: Helvetica, sans-serif;
+}
+
+a {
+    color: gray;
+    text-decoration: none; /*no tenga el subrayado*/
+}
+
+.header {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 32px;
+    margin: 20px;
+}
+
+input {
+    height: 36px;
+    border-radius: 4px;
+    background-color: #efefef;
+    color: gray;
+    border: 1px solid transparent;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px;
+    padding: 0 10px;
+    flex-grow: 1;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons img {
+    width: 25px;
+    margin: 20px;
+}
+
+/* contenido */
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.tile-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 900px;
+    /* para que entren los elementos */
+    height: 350vh;
+}
+
+.tile{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.tile:hover{
+    background-color: #efefef;
+}
+
+.tile img{
+    border-radius: 8px;
+}
+
+/*siver para escorder el save y cuando se pone el mouse encima, hace que overlay aparezca encima*/
+.tile .overlay{
+    /* display: none; */
+    position: absolute;
+    z-index: 1;
+    width: 90%;
+    padding: 15px;
+}
+
+.tile:hover .overlay{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*relative: referencia y absolute: para mover las cosas*/
+
+.tile .overlay img{
+    width: 40px;
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 50%;
+
+}
+
+.tile .overlay button{
+    background-color: #bd081d;
+    font-weight: bold;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    border: 0;
+}

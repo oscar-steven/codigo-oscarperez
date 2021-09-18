@@ -30,6 +30,9 @@
 
 .hijo3 {
     background-color: cornflowerblue;
+    animation-name: animacion3;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes animacion1 {
@@ -71,4 +74,25 @@
     100%{
         top: -100%;
     }
+    
+}
+
+@keyframes animacion3 {
+    0%{
+        top: 100%;
+    }
+    66%{
+        top: 100%
+    }
+    70%{
+        top: 0%
+    }
+    97%{
+        top: 0%
+    }
+    100%{
+        top: -100%
+    }
+
+    
 }
