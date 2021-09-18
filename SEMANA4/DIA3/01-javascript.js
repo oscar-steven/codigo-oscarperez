@@ -54,10 +54,14 @@ console.log(nota);
 
 var nulo = null;
 
-console.log(nulo)
+console.log(nulo);
 
 //NAN = Not a Number
 
-var rareza = (100/"cebollas")
+var rareza = (100/"cebollas");
 
-console.log(rareza)
+console.log(rareza);
+
+var infinito = 100 / 0;
+
+console.log(infinito);
