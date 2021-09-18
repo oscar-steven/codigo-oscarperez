@@ -6,6 +6,12 @@
     font-family: Helvetica, sans-serif;
 }
 
+/* body{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px auto;
+} */
+
 a {
     color: gray;
     text-decoration: none; /*no tenga el subrayado*/
@@ -59,7 +65,7 @@ input {
     flex-wrap: wrap;
     width: 900px;
     /* para que entren los elementos */
-    height: 350vh;
+    height: 100vh;
 }
 
 .tile{
@@ -135,3 +141,4 @@ input {
     color: gray;
     font-size: 14px;
 }
+
