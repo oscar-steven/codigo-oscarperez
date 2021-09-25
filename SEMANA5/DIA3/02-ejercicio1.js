@@ -63,4 +63,10 @@ do {
   }
 } while (finalizar == false);
 
+let total = precioSimple * cantidadSimple + precioDoble * cantidadDoble;
 
+console.log(
+  `El total a pagar sera de: ${total} por ${cantidadSimple} hamburguesa simple y por ${
+    cantidadDoble * precioDoble
+  } por haburguesas Dobles`
+);
