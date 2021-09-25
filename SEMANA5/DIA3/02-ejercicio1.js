@@ -70,3 +70,10 @@ console.log(
     cantidadDoble * precioDoble
   } por haburguesas Dobles`
 );
+
+
+var i=0;	 	 
+while (i <= 5) {	 	 
+    document.write("Valor de i = " + i + "<br>");	 	 
+    i++;	 	 
+}
