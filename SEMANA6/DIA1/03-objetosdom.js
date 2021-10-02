@@ -58,8 +58,60 @@ let miTexto = document.querySelector("#texto");
 console.log(miTexto);
 
 let boxes = document.querySelectorAll(".box");
-console.log(boxes)
+console.log(boxes);
 
-boxes.forEach(function(bx){
-    bx.innerHTML=`<p>So un parrafo</p>`
-})
+boxes.forEach(function (bx) {
+  bx.innerHTML = `<p>Soy un parrafo</p>`;
+});
+
+console.log(boxes[0].innerHTML);
+
+//crear elementos
+let series = [
+  "Squid Game",
+  "Pasion de Gavilanes",
+  "Dark",
+  "Billions",
+  "Got",
+  "Suits",
+  "Mr. Robot",
+  "House of dragons",
+  "Chernobyl",
+  "Breakin Bad",
+];
+
+let divContenido = document.getElementById("contenido");
+
+//createElement("letiqueta") :"p","ul","h1","td"
+let lista = document.createElement("ul");
+divContenido.appendChild(lista);
+
+let textoLI = "";
+series.forEach(function (programaTv) {
+  textoLI = textoLI + `<li>${programaTv}</li>`;
+});
+
+// console.log(textoLI);
+
+lista.innerHTML = textoLI
+
+
+let imagen = document.createElement("img")
+
+divContenido.appendChild(imagen)
+
+imagen.setAttribute("src","https://picsum.photos/200/300")
+
+
+// var img = document.createElement("img");
+// img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
+
+// var src = document.getElementById("contenido");
+// src.appendChild(img);
+
+//clases de css
+//a un elemento le podemos aplicar varias clases
+//add("nombreclase")
+lista.classList.add("resalto")
+lista.classList.add("redondeado")
+lista.classList.remove("resalto")
