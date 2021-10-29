@@ -4,13 +4,13 @@
 // 3. Converti esos datos a HTML entendible por el navegador
 
 // importar
-import { obtenerProductos } from "./comunicacion";
+import { obtenerProductos } from "./Comunicacion.js";
 
 //variables globales - los elementos del DOM
 
 const getProductos = async () => {
   try {
-    let productosObteneidos = await obtenerProductos();
+    let productosObteneidos = await obtenerProductos(); //devuelve una promesa, por eso el await
     console.table(productosObteneidos);
   } catch (error) {
     console.log(error);
