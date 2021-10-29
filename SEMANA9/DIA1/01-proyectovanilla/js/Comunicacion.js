@@ -16,3 +16,6 @@ const obtenerProductos = async () => {
     throw error;
   }
 };
+
+//este es el export, si es mas de una funcion se pone coma y se coloca otra funcion
+export { obtenerProductos };
