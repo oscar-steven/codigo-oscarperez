@@ -23,3 +23,5 @@ const imprimirProductos = (arregloProductos) => {
   });
   divProductos.innerHTML = cardsProductos; //el contenido HTML de divProductos sera cardsProductos rellenado
 };
+
+export { imprimirProductos };

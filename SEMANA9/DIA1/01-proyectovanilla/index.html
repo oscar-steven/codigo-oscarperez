@@ -15,7 +15,6 @@
     />
   </head>
   <body>
-
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand">CodiGO Store</a>
@@ -23,9 +22,42 @@
     </nav>
 
     <div class="container">
-        <h1 class="mt-4">Lista de Productos</h1>
-        <main class="row" id="productos"></main>
+      <h1 class="mt-4">Lista de Productos</h1>
+      <button class="btn btn-primary btn-lg" id="btnCrear">Agregar Producto</button>
+      <main class="row" id="productos"></main>
     </div>
+
+    <div class="modal" tabindex="-1" id="modalCrear">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Crear</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formCrear">
+                    <div>
+                        <label>Nombre Producto:</label>
+                        <input type="text" class="form-control" name="nombre" />
+                    </div>
+                    <div>
+                        <label>Descripción Producto</label>
+                        <input type="text" class="form-control" name="descripcion" />
+                    </div>
+                    <div>
+                        <label>Precio Producto</label>
+                        <input type="number" class="form-control" name="precio" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnGuardar">Guardar Producto</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     <!-- JavaScript Bundle with Popper -->
     <script
