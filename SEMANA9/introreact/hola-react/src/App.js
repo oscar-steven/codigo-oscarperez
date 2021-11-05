@@ -36,12 +36,12 @@ function App() {
       {/* Nombre del componente */}
       <Main
         subtitulo="Yo soy el subtitulo"
-        mostrarinfo={true}
+        mostrarInfo={true}
         numero={1}
         tituloPadre={titulo}
         actualizarTitulo={setTitulo}
       />
-      <Main subtitulo="Segundo subtitulo" mostrarinfo={false} numero={2} />
+      <Main subtitulo="Segundo subtitulo" mostrarInfo={false} numero={2} />
     </>
   );
 }
