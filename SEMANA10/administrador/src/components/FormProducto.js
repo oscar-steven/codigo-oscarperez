@@ -1,9 +1,13 @@
+import { useRef } from "react";
+
 export default function FormProducto({
   value,
   actualizarInput,
   manejarSubmit,
+  manejarImagen,
 }) {
-  console.log(value);
+  const inputFile = useRef(); //es una referencia de react hacia un elemento como si fuera un ID
+
   return (
     <div>
       <form
@@ -12,7 +16,7 @@ export default function FormProducto({
         }}
       >
         <div className="mb-3">
-          <label className="form-label">Nombre Producto</label>
+          <label className="form-label">Nombre producto</label>
           <input
             type="text"
             className="form-control"
@@ -25,7 +29,7 @@ export default function FormProducto({
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Descripcion Producto</label>
+          <label className="form-label">Descripción producto</label>
           <input
             type="text"
             className="form-control"
@@ -38,9 +42,9 @@ export default function FormProducto({
         </div>
 
         <div className="mb-3">
-          <label className="form-label">NomPrecio Producto</label>
+          <label className="form-label">Precio producto</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             name="precio"
             value={value.precio}
@@ -49,6 +53,19 @@ export default function FormProducto({
             }}
           />
         </div>
+
+        <div className="mb-3">
+          <label className="form-label">Imagen</label>
+          <input
+            type="file"
+            className="form-control"
+            ref={inputFile}
+            onChange={(e) => {
+              manejarImagen(e);
+            }}
+          />
+        </div>
+
         <button className="btn btn-primary" type="submit">
           Guardar
         </button>
