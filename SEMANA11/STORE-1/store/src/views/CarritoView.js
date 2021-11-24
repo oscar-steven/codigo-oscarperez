@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import { CarritoContext } from "../context/carritoContext";
 import Swal from "sweetalert2";
-
 export default function CarritoView() {
   const { carrito, limpiarCarrito } = useContext(CarritoContext);
 
   const manejarLimpiarCarrito = async () => {
     const accionUsuario = await Swal.fire({
       icon: "warning",
-      title: "Desea limpiar su carrito ?",
+      title: "Desea borrar su carrito?",
       showConfirmButton: true,
       showCancelButton: true,
     });
+
     if (accionUsuario.isConfirmed) {
       limpiarCarrito();
     }
@@ -32,7 +32,6 @@ export default function CarritoView() {
             <th>Nombre</th>
             <th>Precio</th>
             <th>Cantidad</th>
-            <th>Precio Unitario</th>
             <th>Precio Total</th>
           </tr>
         </thead>
@@ -42,7 +41,6 @@ export default function CarritoView() {
               <td>{prod.nombre}</td>
               <td>{prod.precio}</td>
               <td>{prod.cantidad}</td>
-              <td>{prod.precio}</td>
               <td>{prod.precio * prod.cantidad}</td>
             </tr>
           ))}
@@ -56,7 +54,7 @@ export default function CarritoView() {
         >
           Limpiar Carrito
         </button>
-        <button className="btn btn-dark btn-lg">Hacer Check Out</button>
+        <button className="btn btn-dark btn-lg">Hacer Checkout</button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import { AuthContextProvider } from "./context/authContext";
 import CarritoContextProvider from "./context/carritoContext";
 
@@ -11,6 +12,7 @@ import Navegacion from "./components/Navegacion";
 import ProductoDetalleView from "./views/ProductoDetalleView";
 import CarritoView from "./views/CarritoView";
 import NotFound from "./views/NotFound";
+import ProductoConFiltrosView from "./views/ProductoConFiltrosView";
 
 export default function App() {
   return (
@@ -20,7 +22,7 @@ export default function App() {
         <Router>
           <Navegacion />
           <Routes>
-            {/* Cuando quiero poner una pagina de 404, le indico al path="*" y al principio */}
+            {/* cuando quiero poner una página de 404, le indico el path="*" y al principio */}
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<HomeView />} />
             <Route path="/login" element={<LoginView />} />
@@ -29,6 +31,17 @@ export default function App() {
               element={<ProductoDetalleView />}
             />
             <Route path="/carrito" element={<CarritoView />} />
+            <Route path="/productosfiltros">
+              <Route
+                path="/productosfiltros"
+                element={<ProductoConFiltrosView />}
+              />
+              <Route
+                path="/productosfiltros/:busqueda"
+                element={<ProductoConFiltrosView />}
+              />
+            </Route>
+            {/* rutas privadas */}
             <Route
               path="/checkout"
               element={
