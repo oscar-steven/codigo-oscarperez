@@ -1,6 +1,10 @@
-function App() {
-  return;
-  <div></div>;
-}
+import React from "react";
+import Login from "./containers/Login";
 
-export default App;
+export default function App() {
+  return (
+    <div>
+      <Login />
+    </div>
+  );
+}
