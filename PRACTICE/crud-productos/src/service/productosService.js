@@ -55,20 +55,18 @@ const eliminarProducto = async (id) => {
 };
 
 const subirImagen = (imagen) => {
-  // console.log(imagen);
+  console.log(imagen);
   return new Promise((resolve, reject) => {
-    //1, necesita la referencia para indicar donde vamos a guardar el archivo
     let refStorage = storage.ref(`fotos/${imagen.name}`);
     let tareaSubir = refStorage.put(imagen);
 
     tareaSubir.on(
       "state_changed",
-      () => {}, //ver el progreso
+      () => {},
       (error) => {
         reject(error);
-      }, //ver si hay error
+      },
       () => {
-        //tareaSubir finalizada
         tareaSubir.snapshot.ref.getDownloadURL().then((urlImagen) => {
           resolve(urlImagen);
         });

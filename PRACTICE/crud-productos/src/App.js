@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect, useRef } from "react";
 import {
   obtenerProductos,
+  obtenerProductoPorId,
+  editarProductoPorId,
   eliminarProducto,
   crearProducto,
   subirImagen,
@@ -9,6 +11,7 @@ import {
 import Swal from "sweetalert2";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 let imagen;
 
@@ -98,6 +101,7 @@ export default function App() {
         title: "Éxito",
         text: "Producto Creado!",
       });
+      setValue([]);
       handleClose();
       getProductos();
     } catch (error) {
@@ -109,6 +113,37 @@ export default function App() {
     e.preventDefault();
     console.log(e.target.files);
     imagen = e.target.files[0];
+  };
+
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////////////////////////
+  //EDITAR PRODUCTO
+
+  const { id } = useParams();
+
+  const getProducto = async () => {
+    try {
+      const prodObtenido = await obtenerProductoPorId(id);
+      setValue(prodObtenido);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const manejarSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await editarProductoPorId(id, value);
+      await Swal.fire({
+        icon: "success",
+        title: "Éxito",
+        text: "Producto Editado Exitosamente",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   ////////////////////////////////////////////////////////////////////
