@@ -17,9 +17,12 @@ let imagen;
 
 export default function App() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [showEdit, setShowEdit] = useState(false);
+  const handleCloseEdit = () => setShowEdit(false);
+  const handleShowEdit = () => setShowEdit(true);
 
   ////////////////////////////////////////////////////////////////////
   //OBTENER PRODUCTOS
@@ -34,10 +37,6 @@ export default function App() {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    getProductos();
-  }, []);
 
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
@@ -122,32 +121,66 @@ export default function App() {
   //EDITAR PRODUCTO
 
   const { id } = useParams();
+  const [idprod, setIdProd] = useState();
 
-  const getProducto = async () => {
+  const getProductoEdit = async (id) => {
+    handleShowEdit();
     try {
       const prodObtenido = await obtenerProductoPorId(id);
       setValue(prodObtenido);
+      setIdProd(prodObtenido.id);
+      console.log(prodObtenido);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const manejarSubmit = async (e) => {
+  const actualizarInputEdit = (e) => {
+    console.log(e.target.name, e.target.value);
+    setValue({
+      ...value, //cogiendo el estado de value, spreadoperator
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const manejarSubmitEdit = async (e) => {
+    console.log(idprod);
     e.preventDefault();
     try {
-      await editarProductoPorId(id, value);
+      if (typeof imagen !== "undefined") {
+        const urlImagenSubida = await subirImagen(imagen);
+        await editarProductoPorId(idprod, {
+          ...value,
+          imagen: urlImagenSubida,
+        });
+      } else {
+        await editarProductoPorId(idprod, value);
+      }
       await Swal.fire({
         icon: "success",
         title: "Éxito",
         text: "Producto Editado Exitosamente",
       });
+      setValue([]);
+      handleCloseEdit();
+      getProductos();
     } catch (error) {
       console.log(error);
     }
   };
 
+  const manejarImagenEdit = (e) => {
+    e.preventDefault();
+    console.log(e.target.files);
+    imagen = e.target.files[0]; //como para utilizar
+  };
+
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    getProductos();
+  }, []);
 
   return (
     <>
@@ -185,7 +218,14 @@ export default function App() {
                     </td>
                     <td>
                       <div className="form-group row justify-content-center">
-                        <button className="btn btn-dark">Editar</button>
+                        <button
+                          className="btn btn-dark"
+                          onClick={() => {
+                            getProductoEdit(id);
+                          }}
+                        >
+                          Editar
+                        </button>
                         <button
                           className="btn btn-danger"
                           onClick={() => {
@@ -202,7 +242,6 @@ export default function App() {
             </tbody>
           </table>
         </div>
-
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Crear Producto</Modal.Title>
@@ -255,7 +294,7 @@ export default function App() {
                   className="form-control"
                   ref={inputFile}
                   onChange={(e) => {
-                    manejarImagen(e);
+                    manejarImagenEdit(e);
                   }}
                 />
               </div>
@@ -272,6 +311,80 @@ export default function App() {
               Guardar
             </Button>
             <Button variant="secondary" onClick={handleClose}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal show={showEdit} onHide={handleCloseEdit}>
+          <Modal.Header closeButton>
+            <Modal.Title>Editar Producto</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form>
+              <div className="mb-3">
+                <label className="form-label">Nombre Producto</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="nombre"
+                  value={value.nombre}
+                  onChange={(e) => {
+                    actualizarInputEdit(e);
+                  }}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Descripción producto</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="descripcion"
+                  value={value.descripcion}
+                  onChange={(e) => {
+                    actualizarInputEdit(e);
+                  }}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Precio producto</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="precio"
+                  value={value.precio}
+                  onChange={(e) => {
+                    actualizarInputEdit(e);
+                  }}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Imagen</label>
+                <input
+                  type="file"
+                  className="form-control"
+                  ref={inputFile}
+                  onChange={(e) => {
+                    manejarImagenEdit(e);
+                  }}
+                />
+              </div>
+            </form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              type="submit"
+              className="btn btn-primary"
+              onClick={(e) => {
+                manejarSubmitEdit(e);
+              }}
+            >
+              Actualizar
+            </Button>
+            <Button variant="secondary" onClick={handleCloseEdit}>
               Cerrar
             </Button>
           </Modal.Footer>
